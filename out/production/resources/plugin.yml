@@ -1,5 +1,5 @@
 name: LavaRises
-version: '${version}'
+version: 1.0
 main: dev.acronical.lavarises.LavaRises
 api-version: '1.20'
 commands:

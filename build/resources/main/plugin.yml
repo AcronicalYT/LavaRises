@@ -1,5 +1,5 @@
 name: LavaRises
-version: '1.0-SNAPSHOT'
+version: 1.0
 main: dev.acronical.lavarises.LavaRises
 api-version: '1.20'
 commands:
@@ -7,5 +7,9 @@ commands:
     description: Raises the lava level
     usage: /<command> <amount>
     permission: lavarises.lavarise
+  initlava:
+    description: Initializes the lava level
+    usage: /<command>
+    permission: lavarises.initlava
 depend:
   - FastAsyncWorldEdit

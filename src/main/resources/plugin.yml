@@ -7,5 +7,9 @@ commands:
     description: Raises the lava level
     usage: /<command> <amount>
     permission: lavarises.lavarise
+  initlava:
+    description: Initializes the lava level
+    usage: /<command>
+    permission: lavarises.initlava
 depend:
   - FastAsyncWorldEdit

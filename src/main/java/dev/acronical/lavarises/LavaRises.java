@@ -9,6 +9,7 @@ public final class LavaRises extends JavaPlugin {
     public void onEnable() {
         PluginCommands commands= new PluginCommands();
         getCommand("lavarise").setExecutor(commands);
+        getCommand("initlava").setExecutor(commands);
         getServer().getConsoleSender().sendMessage("[LavaRises] - Plugin Enabled");
     }
 

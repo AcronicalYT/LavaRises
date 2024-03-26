@@ -1,15 +1,6 @@
 package dev.acronical.lavarises.commands;
 
-import com.fastasyncworldedit.core.FaweAPI;
-import com.sk89q.worldedit.function.mask.Mask;
-import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.regions.CuboidRegion;
-import com.sk89q.worldedit.regions.Region;
-import com.sk89q.worldedit.world.World;
-import com.sk89q.worldedit.world.block.BaseBlock;
-
 import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,11 +11,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-
-import static com.sk89q.worldedit.world.block.BlockTypes.*;
 
 public class PluginCommands implements CommandExecutor {
 
@@ -33,6 +19,15 @@ public class PluginCommands implements CommandExecutor {
 
     int yLevel = data.getInt("yLevel");
     boolean initialised = data.getBoolean("initialised");
+    int width = data.getInt("width");
+    int length = data.getInt("length");
+    int originX = data.getInt("originX");
+    int originZ = data.getInt("originZ");
+
+    int x1 = 0;
+    int z1 = 0;
+    int x2 = 0;
+    int z2 = 0;
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -42,6 +37,36 @@ public class PluginCommands implements CommandExecutor {
         }
 
         if (command.getName().equalsIgnoreCase("initlava") && player.hasPermission("lavarises.initlava")) {
+            // save the coordinates of the opposite corners of the selection based on the user input
+            if (strings.length < 2) {
+                player.sendMessage("Please provide the length and width area, adding coordinates for the origin is optional.");
+                return true;
+            }
+
+            int length = Integer.parseInt(strings[0]);
+            int width = Integer.parseInt(strings[1]);
+
+            if(strings.length == 3) {
+                originX = Integer.parseInt(strings[2]);
+                originZ = originX;
+            } else if(strings.length == 4) {
+                originX = Integer.parseInt(strings[2]);
+                originZ = Integer.parseInt(strings[3]);
+            } else {
+                originX = 0;
+                originZ = 0;
+            }
+
+            data.set("length", length);
+            data.set("width", width);
+            data.set("originX", originX);
+            data.set("originZ", originZ);
+
+            x1 = originX - (length / 2);
+            z1 = originZ - (width / 2);
+            x2 = originX + (length / 2);
+            z2 = originZ + (width / 2);
+
             data.set("initialised", true);
             data.set("yLevel", -64);
             yLevel = -64;
@@ -49,6 +74,7 @@ public class PluginCommands implements CommandExecutor {
             try {
                 data.save(lavaFile);
                 player.sendMessage("Lavarises has been initialised.");
+                player.sendMessage("The area has been set to " + length + "x" + width + " blocks around point " + originX + "," + originZ + ".");
                 player.sendMessage("You can now use /lavarise [amount] to raise the lava.");
             } catch (IOException e) {
                 System.out.println("[!] An error occurred while saving the data.");
@@ -59,12 +85,6 @@ public class PluginCommands implements CommandExecutor {
         }
 
         if (command.getName().equalsIgnoreCase("lavarise") && player.hasPermission("lavarises.lavarise")) {
-            // get the opposite corners of the selection
-            int x1 = -150;
-            int z1 = -150;
-            int x2 = 150;
-            int z2 = 150;
-
             if (!initialised) {
                 player.sendMessage("Please initialise lavarises first.");
                 player.sendMessage("Use /initlava to initialise lavarises.");
@@ -77,16 +97,18 @@ public class PluginCommands implements CommandExecutor {
 
             // Get the number of block to raise the lava by
             if (strings.length > 0) {
-                try {
-                    if (strings[0].startsWith("-")) {
-                        player.sendMessage("Please provide a positive number.");
-                        return true;
-                    }
+                if (strings[0].startsWith("-")) {
+                    player.sendMessage("Please provide a positive number.");
+                    return true;
+                }
+                if ((Integer.parseInt(strings[0]) + yLevel) > 320) {
+                    player.sendMessage("Lava too high, please enter " + (320 - oldYLevel) + " or less.");
+                    yLevel = yLevel;
+                    return true;
+                } else {
                     yLevel = Integer.parseInt(strings[0]) + yLevel;
-                    if (yLevel > 320) {
-                        player.sendMessage("Lava too high, please enter " + (320 - oldYLevel) + " or less.");
-                        return true;
-                    }
+                }
+                try {
                     data.set("yLevel", yLevel);
                     data.save(lavaFile);
                 } catch (NumberFormatException e) {

@@ -10,11 +10,11 @@ public final class LavaRises extends JavaPlugin {
         PluginCommands commands= new PluginCommands();
         getCommand("lavarise").setExecutor(commands);
         getCommand("initlava").setExecutor(commands);
-        getServer().getConsoleSender().sendMessage("[LavaRises] - Plugin Enabled");
+        getServer().getConsoleSender().sendMessage("[LavaRises by Acronical] - Plugin Enabled");
     }
 
     @Override
     public void onDisable() {
-        getServer().getConsoleSender().sendMessage("[LavaRises] - Plugin Disabled");
+        getServer().getConsoleSender().sendMessage("[LavaRises by Acronical] - Plugin Disabled");
     }
 }

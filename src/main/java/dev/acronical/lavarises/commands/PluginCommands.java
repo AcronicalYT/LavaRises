@@ -73,7 +73,7 @@ public class PluginCommands implements CommandExecutor {
             initialised = true;
             try {
                 data.save(lavaFile);
-                player.sendMessage("Lavarises has been initialised.");
+                player.sendMessage("Lavarises by Acronical has been initialised.");
                 player.sendMessage("The area has been set to " + length + "x" + width + " blocks around point " + originX + "," + originZ + ".");
                 player.sendMessage("You can now use /lavarise [amount] to raise the lava.");
             } catch (IOException e) {

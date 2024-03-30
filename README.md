@@ -6,18 +6,20 @@ Initialising the plugin allows you to set an area of length and width for the la
 The raise lava command takes an input for the number of blocks you want to raise the lava by, the more blocks/closer to the surface, the more lag.
 
 Init command usage: /initlava <length> <width> [originx] [originz]
- - Length/width in blocks
- - OriginX is an x coordinate 
- - OriginZ is a z coordinate
+- Length/width in blocks
+- OriginX is an x coordinate (optional)
+- OriginZ is a z coordinate (optional)
+  - Setting one origin will set both coordinates to that value
+  - Leaving the origin blank will set it to 0, 0
 
 Rise command usage: /lavarise <amount>
- - Amount is in blocks
- - Initialised starts is always -64
+- Amount is in blocks
+- Initialised starts is always -64
 
 To utilise this plugin, you must either be OP or have the following permissions:
- - lavarises.*
- - lavarises.initlava
- - lavarises.lavarise
+- lavarises.*
+- lavarises.initlavaA
+- lavarises.lavarise
 
 This plugin requires [FastAsyncWorldEdit](https://www.spigotmc.org/resources/fastasyncworldedit.13932/).
 

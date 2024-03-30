@@ -1,3 +1,5 @@
+# Lava Rises by Acronical
+
 A customisable lava rises plugin for Minecraft servers running the Spigot/Paper software.
 This is a more customisable version of the plugin originally made for [Yrrah](https://www.linktr.ee/Yrrah).
 If you use this plugin in your own content, please credit me by linking this repository and [my website](https://acronical.pages.dev).

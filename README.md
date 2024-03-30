@@ -20,7 +20,7 @@ Rise command usage: /lavarise <amount>
 
 To utilise this plugin, you must either be OP or have the following permissions:
 - lavarises.*
-- lavarises.initlavaA
+- lavarises.initlava
 - lavarises.lavarise
 
 This plugin requires [FastAsyncWorldEdit](https://www.spigotmc.org/resources/fastasyncworldedit.13932/).

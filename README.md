@@ -1,7 +1,7 @@
 # Lava Rises by Acronical
 
 A customisable lava rises plugin for Minecraft servers running the Spigot/Paper software.
-This is a more customisable version of the plugin originally made for [Yrrah](https://www.linktr.ee/Yrrah).
+This is a more customisable version of the plugin originally made for [Yrrah](https://www.linktr.ee/Yrrah) and the [Outcasters](https://beacons.ai/outcasts).
 If you use this plugin in your own content, please credit me by linking this repository and [my website](https://acronical.pages.dev).
 
 Initialising the plugin allows you to set an area of length and width for the lava to rise, as well as the x and z coordinates for the centre of that area.

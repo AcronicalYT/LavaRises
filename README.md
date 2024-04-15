@@ -16,7 +16,7 @@ Init command usage: /initlava \<length> \<width> [originx] [originz]
 
 Rise command usage: /lavarise \<amount>
 - Amount is in blocks
-- Initialised starts is always -64
+- Initialised start is always -64
 
 To utilise this plugin, you must either be OP or have the following permissions:
 - lavarises.*

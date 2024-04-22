@@ -8,4 +8,4 @@
 
 ## Reporting a Vulnerability
 
-Report any security issues in the [issues tab.](https://github.com/AcronicalYT/LavaRises/issues)
+Report any security issues in the [issues tab.](https://github.com/OutcastsEvents/LavaRises/issues)

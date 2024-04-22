@@ -43,8 +43,8 @@ public class PluginCommands implements CommandExecutor {
                 return true;
             }
 
-            int length = Integer.parseInt(strings[0]);
-            int width = Integer.parseInt(strings[1]);
+            length = Integer.parseInt(strings[0]);
+            width = Integer.parseInt(strings[1]);
 
             if(strings.length == 3) {
                 originX = Integer.parseInt(strings[2]);
@@ -123,8 +123,8 @@ public class PluginCommands implements CommandExecutor {
                 return true;
             }
 
-            player.performCommand(String.format("/pos1 %s,%s,%s", x1, oldYLevel, z1));
-            System.out.println("Pos1 set to: " + x1 + "" + oldYLevel + "" + z1);
+            player.performCommand(String.format("/pos1 %s,-64,%s", x1, z1));
+            System.out.println("Pos1 set to: " + x1 + " -64 " + z1);
             player.performCommand(String.format("/pos2 %s,%s,%s", x2, yLevel, z2));
             System.out.println("Pos2 set to: " + x2 + "" + yLevel + "" + z2);
             player.performCommand("/replace air,water lava");

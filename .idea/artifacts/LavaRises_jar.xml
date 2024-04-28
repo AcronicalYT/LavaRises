@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="LavaRises:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/LavaRises_jar</output-path>
-    <root id="archive" name="LavaRises.jar">
-      <element id="module-output" name="dev.acronical.HideSeek.main" />
-      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
-    </root>
-  </artifact>
-</component>
